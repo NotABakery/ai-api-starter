@@ -5,6 +5,10 @@ from database.usage_tracker import log_usage
 
 app = FastAPI()
 
+@app.get("/")
+def read_root():
+    return {"message": "🧠 AI API is alive. Use POST /generate"}
+
 @app.post("/generate")
 async def generate(request: Request):
     data = await request.json()
